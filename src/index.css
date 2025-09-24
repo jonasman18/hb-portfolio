@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.neural-network-bg {
+  background: radial-gradient(circle, rgba(15, 28, 46, 0.5) 0%, rgba(10, 20, 35, 0.9) 100%); /* Fond plus sombre et moins opaque */
+  opacity: 0.7; /* Réduit l'opacité pour laisser l'animation ressortir */
+}
+
+.neural-network-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.neural-network-bg {
+  background: radial-gradient(circle, rgba(15, 28, 46, 0.5) 0%, rgba(10, 20, 35, 0.9) 100%);
+  opacity: 0.7;
+}
+
+.neural-network-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Assure que le contenu commence après le Navbar */
+section:first-child {
+  padding-top: 64px; /* Hauteur ajustée pour le Navbar */
+}
+
+/* Vérifie que le parent du Navbar a une hauteur suffisante */
+body {
+  margin: 0;
+  min-height: 100vh;
+}
