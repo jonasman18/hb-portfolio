@@ -4,13 +4,16 @@ const Home = () => {
       <img
         src="/images/photo.jpg"
         alt="Photo de SOLONDRAIBE Heriniaina Buanco"
-        className="w-48 h-48 mx-auto rounded-full object-cover shadow-md mb-6 ring-2 ring-white"
+        className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto rounded-full object-cover shadow-lg ring-4 ring-white/20 mb-6 transition-transform duration-300 hover:scale-105"
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
       />
-      <h1 className="text-4xl font-bold text-gray-100 mb-4">SOLONDRAIBE Heriniaina Buanco</h1>
-      <p className="text-lg text-gray-300 mb-6 max-w-xl mx-auto">
-        Développeur web passionné par Java, PHP, React et Vite. Découvrez mes projets et compétences ci-dessous !
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4">SOLONDRAIBE Heriniaina Buanco</h1>
+      <p className="text-base sm:text-lg text-gray-300 mb-6 max-w-md sm:max-w-xl mx-auto px-4">
+        Développeur web fullstack passionné et motivé. Découvrez mes projets et compétences ci-dessous !
       </p>
-      <a href="#projects" className="bg-navy-light text-white px-6 py-3 rounded-md hover:bg-navy">
+      <a href="#projects" className="bg-navy-light text-white px-6 py-3 rounded-md hover:bg-navy transition-colors duration-300">
         Voir mes projets
       </a>
     </div>

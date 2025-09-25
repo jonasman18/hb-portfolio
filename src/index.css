@@ -12,24 +12,6 @@ html {
 }
 
 .neural-network-bg {
-  background: radial-gradient(circle, rgba(15, 28, 46, 0.5) 0%, rgba(10, 20, 35, 0.9) 100%); /* Fond plus sombre et moins opaque */
-  opacity: 0.7; /* Réduit l'opacité pour laisser l'animation ressortir */
-}
-
-.neural-network-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.neural-network-bg {
   background: radial-gradient(circle, rgba(15, 28, 46, 0.5) 0%, rgba(10, 20, 35, 0.9) 100%);
   opacity: 0.7;
 }
@@ -43,13 +25,64 @@ html {
   z-index: 0;
 }
 
-/* Assure que le contenu commence après le Navbar */
 section:first-child {
-  padding-top: 64px; /* Hauteur ajustée pour le Navbar */
+  padding-top: 64px;
 }
 
-/* Vérifie que le parent du Navbar a une hauteur suffisante */
 body {
   margin: 0;
   min-height: 100vh;
+}
+
+/* Style personnalisé pour la section compétences */
+.container {
+  max-width: 1200px;
+}
+
+
+
+.backdrop-blur-md {
+  backdrop-filter: blur(8px);
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.hover:shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.hover:-translate-y-1 {
+  transform: translateY(-0.25rem);
+  transition: transform 0.3s ease;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+.transition-colors {
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

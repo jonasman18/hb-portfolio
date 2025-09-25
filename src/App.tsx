@@ -5,6 +5,7 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Skills from './pages/Skills';
+import Footer from './pages/Footer';
 
 function App() {
   const bgRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,8 @@ function App() {
       }
       console.log('Canvas initialized');
 
-      const points = [];
+      // Typage explicite pour points
+      const points: Array<{ x: number; y: number; vx: number; vy: number }> = [];
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
@@ -43,6 +45,7 @@ function App() {
 
       function animate() {
         requestAnimationFrame(animate);
+        if (!ctx) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'rgba(94, 129, 206, 0.9)';
         points.forEach(point => {
@@ -85,23 +88,24 @@ function App() {
     <div className="min-h-screen bg-navy-dark text-gray-100 relative">
       <div ref={bgRef} className="absolute inset-0 neural-network-bg"></div>
       <Navbar />
-      <div className="space-y-20 py-10 relative z-10">
-        <section id="home" className="min-h-screen flex items-center">
+      <div className="space-y-20 py-10 relative z-10 px-4 sm:px-6 lg:px-8"> {/* Paddings adaptatifs */}
+        <section id="home" className="min-h-screen flex items-center justify-center">
           <Home />
         </section>
-        <section id="projects" className="min-h-screen flex items-center">
-          <Projects />
-        </section>
-        <section id="about" className="min-h-screen flex items-center">
+        <section id="about" className="min-h-screen flex items-center justify-center">
           <About />
         </section>
-        <section id="skills" className="min-h-screen flex items-center"> {/* Nouvelle section */}
+        <section id="skills" className="min-h-screen flex items-center justify-center">
           <Skills />
         </section>
-        <section id="contact" className="min-h-screen flex items-center">
+        <section id="projects" className="min-h-screen flex items-center justify-center">
+          <Projects />
+        </section>
+        <section id="contact" className="min-h-screen flex items-center justify-center">
           <Contact />
         </section>
       </div>
+      <Footer/>
     </div>
   );
 }
