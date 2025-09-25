@@ -13,7 +13,6 @@ const Projects = () => {
       title: 'Gestion de soutenances',
       description: 'Une application pour gérer facilement les soutenances d\'une école à l\'université ',
       technologies: 'Java',
-      codeLink: 'https://github.com/votreprofil/repo2',
       image: '/images/photo2.jpg',
     },
     {
