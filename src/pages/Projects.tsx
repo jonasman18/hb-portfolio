@@ -23,13 +23,13 @@ const Projects = () => {
     },
     {
       title: 'Gestion de paiement de colocation d\'appartement',
-      description: 'Gérer un appartement à louer avec les colocataires pour le paiement des frais de colocation surtout ',
+      description: 'Gérer un appartement à louer avec les colocataires pour le paiement des frais de colocation surtout.',
       technologies: 'C#, MySQL',
       image: '/images/photo3.jpg',
     },
     {
       title: 'Portfolio développeur',
-      description: 'Site vitrine pour présenter compétences, expériences; contacts ',
+      description: 'Site vitrine pour présenter profils, compétences, expériences, contacts ',
       technologies: 'React + Vite',
       image: '/images/portfolio.png',
     },

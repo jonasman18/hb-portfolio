@@ -1,36 +1,51 @@
 import React, { useState } from 'react';
-import type { ChangeEvent, FormEvent } from 'react'; // Type-only import
+import type { ChangeEvent, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import { FaPaperPlane, FaLinkedin } from 'react-icons/fa'; // Icône pour le bouton
+import { FaPaperPlane, FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(''); // Pour les erreurs
 
-  // Remplace par tes identifiants EmailJS
+  // Remplace par tes identifiants EmailJS (réels)
   const SERVICE_ID = 'service_abc123'; 
   const TEMPLATE_ID = 'template_jca15lx'; 
   const PUBLIC_KEY = 'Xlg347EcJEIUG4mOL'; 
 
-  emailjs.init(PUBLIC_KEY); // Initialisation une seule fois
+  emailjs.init(PUBLIC_KEY);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(''); // Efface l'erreur
+  };
+
+  const validateEmail = (email: string): boolean => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+[^\s@]+$/; // Regex pour email valide
+    return regex.test(email);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError('');
+
+    // Validation email
+    if (!validateEmail(formData.email)) {
+      setError('Veuillez entrer un email valide (ex. : nom@gmail.com)');
+      return;
+    }
+
     setIsLoading(true);
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
       .then((result) => {
-        console.log('Email envoyé !', result.text);
+        console.log('Email réel envoyé !', result.text);
         setIsSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
       }, (error) => {
         console.error('Erreur d\'envoi :', error);
-        alert('Erreur lors de l\'envoi. Réessaye !');
+        setError('Erreur lors de l\'envoi. Réessaye !');
       })
       .finally(() => {
         setIsLoading(false);
@@ -49,7 +64,7 @@ const Contact = () => {
           <ul className="space-y-4 text-gray-300">
             <li className="flex items-center space-x-3">
               <span className="text-blue-400">📍</span>
-              <span>Fianarantsoa, Madagascar</span>
+              <span>Fianarantsoa et Vangaindrano, Madagascar</span>
             </li>
             <li className="flex items-center space-x-3">
               <span className="text-blue-400">📞</span>
@@ -70,8 +85,12 @@ const Contact = () => {
               </a>
             </li>
             <li className="flex items-center space-x-3">
-            <span className="text-blue-400"><FaLinkedin/></span>
-            <a href="heriniaina-buanco-8a318b2a8" className="hover:underline">Linkedln</a>
+              <FaLinkedin className="text-blue-400" />
+              <a href="https://linkedin.com/in/heriniaina-buanco-8a318b2a8" className="hover:underline">LinkedIn</a>
+            </li>
+            <li className="flex items-center space-x-3">
+            <FaFacebook className="text-blue-400" />
+            <a href="https://www.facebook.com/heriniaina.andrianiaina.752" className="hover:underline"> Heriniaina Buanco </a>
             </li>
           </ul>
         </div>
@@ -114,6 +133,11 @@ const Contact = () => {
               <span>{isLoading ? 'Envoi en cours...' : 'Envoyer le message'}</span>
             </button>
           </form>
+          {error && (
+            <p className="text-red-400 text-center mt-4 font-semibold">
+              {error}
+            </p>
+          )}
           {isSubmitted && (
             <p className="text-green-400 text-center mt-4 font-semibold">
               Message envoyé avec succès ! Je vous répondrai bientôt.

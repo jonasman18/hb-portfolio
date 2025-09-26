@@ -24,7 +24,7 @@ const About = () => {
               Je m'appelle SOLONDRAIBE Heriniaina Buanco, Etudiant à l'Ecole Nationale d'Informatique (ENI), développeur web spécialisé dans la création d'applications 
               modernes et performantes. Avec une expertise en Java, PHP, React et les architectures système, je 
               transforme vos idées en solutions numériques robustes et évolutives. Mon approche combine excellence 
-              technique, design intuitif et expérience utilisateur optimale pour des résultats qui atteignent les attentes.
+              technique, design intuitif et expérience utilisateur optimale pour des résultats qui répondent les attentes.
             </p>
             <a href="#contact" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 inline-block mb-8">
               Engagez-moi pour votre projet
