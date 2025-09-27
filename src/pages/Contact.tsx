@@ -80,7 +80,7 @@ const Contact = () => {
             </li>
             <li className="flex items-center space-x-3">
               <span className="text-blue-400">💼</span>
-              <a href="https://linkedin.com/in/heriniaina-buanco-8a318b2a8" className="hover:underline" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/jonasman18" className="hover:underline" target="_blank" rel="noopener noreferrer">
                 github.com/jonasman18
               </a>
             </li>
