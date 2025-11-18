@@ -33,6 +33,12 @@ const Projects = () => {
       technologies: 'React + Vite',
       image: '/images/portfolio.png',
     },
+    {
+      title: 'Gestion des emplois du temps d\'examen d\'une école',
+      description: 'Application pour gérer ou moderniser les emplois du temps des examens dans une école ou université ',
+      technologies: 'Java Spring Boot, React + Vite',
+      image: '/images/edt.png',
+    },
   ];
 
   return (
