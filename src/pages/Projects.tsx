@@ -39,6 +39,12 @@ const Projects = () => {
       technologies: 'Java Spring Boot, React + Vite',
       image: '/images/affiche.png',
     },
+    {
+  title: 'Gestion d\'un restaurant',
+  description: 'Application web pour gérer facilement un restaurant ',
+  technologies: 'Python Django, Angular',
+  image: '/images/restaurant.png',
+},
   ];
 
   return (
