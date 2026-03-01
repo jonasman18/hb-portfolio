@@ -112,4 +112,3 @@ section {
 /* Distance de départ un peu plus marquée pour que ça soit visible */
 .-translate-x-24 { transform: translateX(-6rem); }
 .translate-x-24  { transform: translateX(6rem); }
-

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
@@ -9,21 +9,27 @@ import Footer from './pages/Footer';
 
 function App() {
   const bgRef = useRef<HTMLDivElement>(null);
-  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     const initNeuralNetwork = () => {
       console.log('Attempting to initialize neural network');
       const bg = bgRef.current;
-      if (!bg) return console.error('Background container not found');
-      console.log('Background container found');
-
+      if (!bg) {
+        console.error('Background container not found via ref');
+        return;
+      }
+      console.log('Background container found via ref');
       const canvas = document.createElement('canvas');
       canvas.className = 'neural-network-canvas';
       bg.appendChild(canvas);
       const ctx = canvas.getContext('2d');
-      if (!ctx) return console.error('Canvas 2D context not supported');
+      if (!ctx) {
+        console.error('Canvas 2D context not supported');
+        return;
+      }
+      console.log('Canvas initialized');
 
+      // Typage explicite pour points
       const points: Array<{ x: number; y: number; vx: number; vy: number }> = [];
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -78,82 +84,28 @@ function App() {
     initNeuralNetwork();
   }, []);
 
-  
-  // Observer réciproque : entre → affiche, sort → cache
-  const slideObserver = useCallback((entries: IntersectionObserverEntry[]) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-slide-in');
-        entry.target.classList.remove('opacity-0', '-translate-x-24', 'translate-x-24');
-      } else {
-        // Quand on sort (vers le haut ou bas), on remet l'état initial
-        entry.target.classList.remove('animate-slide-in');
-        // On remet le décalage selon la direction (optionnel, ici on remet aléatoire ou fixe)
-        entry.target.classList.add(entry.target.getBoundingClientRect().top < 0 ? 'translate-x-24' : '-translate-x-24');
-        entry.target.classList.add('opacity-0');
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(slideObserver, {
-      threshold: 0.25,           // déclenche quand ~25% visible
-      rootMargin: '-10% 0px -10% 0px' // un peu de marge haut/bas
-    });
-
-    sectionsRef.current.forEach(section => {
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, [slideObserver]);
-
   return (
     <div className="min-h-screen bg-navy-dark text-gray-100 relative">
       <div ref={bgRef} className="absolute inset-0 neural-network-bg"></div>
       <Navbar />
-      <div className="space-y-20 py-10 relative z-10 px-4 sm:px-6 lg:px-8">
-        <section
-          ref={el => { sectionsRef.current[0] = el; }}
-          id="home"
-          className="min-h-screen flex items-center justify-center opacity-0 -translate-x-24 transition-all duration-1200 ease-out"
-        >
+      <div className="space-y-20 py-10 relative z-10 px-4 sm:px-6 lg:px-8"> {/* Paddings adaptatifs */}
+        <section id="home" className="min-h-screen flex items-center justify-center">
           <Home />
         </section>
-
-        <section
-          ref={el => { sectionsRef.current[1] = el; }}
-          id="about"
-          className="min-h-screen flex items-center justify-center opacity-0 translate-x-24 transition-all duration-1200 ease-out"
-        >
+        <section id="about" className="min-h-screen flex items-center justify-center">
           <About />
         </section>
-
-        <section
-          ref={el => { sectionsRef.current[2] = el; }}
-          id="skills"
-          className="min-h-screen flex items-center justify-center opacity-0 -translate-x-24 transition-all duration-1200 ease-out"
-        >
+        <section id="skills" className="min-h-screen flex items-center justify-center">
           <Skills />
         </section>
-
-        <section
-          ref={el => { sectionsRef.current[3] = el; }}
-          id="projects"
-          className="min-h-screen flex items-center justify-center opacity-0 translate-x-24 transition-all duration-1200 ease-out"
-        >
+        <section id="projects" className="min-h-screen flex items-center justify-center">
           <Projects />
         </section>
-
-        <section
-          ref={el => { sectionsRef.current[4] = el; }}
-          id="contact"
-          className="min-h-screen flex items-center justify-center opacity-0 -translate-x-24 transition-all duration-1200 ease-out"
-        >
+        <section id="contact" className="min-h-screen flex items-center justify-center">
           <Contact />
         </section>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 }
