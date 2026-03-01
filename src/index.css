@@ -87,3 +87,29 @@ body {
   }
 }
 
+/* Animation fluide au scroll */
+.animate-slide-in {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* Transition de base (avant que l'observer ne déclenche) */
+section {
+  transition: all 1s ease-out;
+}
+
+/* Animation d'entrée */
+.animate-slide-in {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* Transition très douce */
+section {
+  transition: all 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+}
+
+/* Distance de départ un peu plus marquée pour que ça soit visible */
+.-translate-x-24 { transform: translateX(-6rem); }
+.translate-x-24  { transform: translateX(6rem); }
+
