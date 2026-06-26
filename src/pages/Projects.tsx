@@ -45,6 +45,14 @@ const Projects = () => {
   technologies: 'Python Django, Angular',
   image: '/images/restaurant.png',
 },
+{
+  title: 'Gestion de transfert d\'argent en ligne',
+  description: 'Gérer un transfert d\'argent en ligne comme TapTap Send',
+  technologies: 'JavaServer Page (JSP)',
+  image: '/images/TransfertOnline.png',
+},
+
+
   ];
 
   return (

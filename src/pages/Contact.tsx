@@ -12,7 +12,7 @@ const Contact = () => {
   // Remplace par tes identifiants EmailJS (réels)
   const SERVICE_ID = 'service_abc123'; 
   const TEMPLATE_ID = 'template_jca15lx'; 
-  const PUBLIC_KEY = 'Xlg347EcJEIUG4mOL'; 
+  const PUBLIC_KEY = 'vZ6YmM18X4uq8E-YH'; 
 
   emailjs.init(PUBLIC_KEY);
 
